@@ -240,6 +240,7 @@ app.controller('MainCtrl', [
       .success(function (data) {
         $rootScope.config = data
         $scope.config = data
+        $scope.authEnabled = data.isAuthEnabled
       })
   }
 ])

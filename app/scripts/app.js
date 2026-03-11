@@ -13,6 +13,19 @@ app.config(['$routeProvider', function ($routeProvider) {
     .otherwise({ redirectTo: '/' })
 }])
 
+app.config(['$httpProvider', function ($httpProvider) {
+  $httpProvider.interceptors.push(['$q', function ($q) {
+    return {
+      responseError: function (rejection) {
+        if (rejection.status === 401) {
+          window.location.href = 'login'
+        }
+        return $q.reject(rejection)
+      }
+    }
+  }])
+}])
+
 app.run(['$rootScope', function ($rootScope) {
   // Connect Socket.io
   const socket = io({

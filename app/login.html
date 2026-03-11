@@ -1,0 +1,156 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <title>MailDev - Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      *, *::before, *::after { box-sizing: border-box; }
+
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        -webkit-font-smoothing: antialiased;
+        background-color: rgb(10, 38, 60);
+      }
+
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .login-card {
+        background: white;
+        border-radius: 4px;
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+        width: 100%;
+        max-width: 360px;
+        overflow: hidden;
+      }
+
+      .login-header {
+        background: rgb(73, 148, 206);
+        padding: 2em 2em 1.8em;
+        text-align: center;
+        color: white;
+      }
+
+      .login-header .envelope {
+        font-size: 2.5em;
+        margin-bottom: 0.2em;
+        display: block;
+        line-height: 1;
+      }
+
+      .login-header h1 {
+        margin: 0;
+        font-size: 1.6em;
+        font-weight: 500;
+        letter-spacing: 0.02em;
+      }
+
+      .login-body {
+        padding: 1.8em 2em 2em;
+      }
+
+      .error-message {
+        background: #fff0f0;
+        border: 1px solid #ffcccc;
+        color: #cc0000;
+        border-radius: 3px;
+        padding: 0.6em 0.8em;
+        font-size: 13px;
+        margin-bottom: 1.2em;
+        display: none;
+      }
+
+      .form-group {
+        margin-bottom: 1.1em;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 0.4em;
+        font-weight: 500;
+        color: rgba(0,0,0,0.75);
+        font-size: 13px;
+      }
+
+      .form-group input {
+        display: block;
+        width: 100%;
+        padding: 0.55em 0.75em;
+        border: 1px solid #cdd4da;
+        border-radius: 3px;
+        font-size: 14px;
+        font-family: inherit;
+        color: #222;
+        transition: border-color 150ms;
+        outline: none;
+      }
+
+      .form-group input:focus {
+        border-color: rgb(73, 148, 206);
+        box-shadow: 0 0 0 2px rgba(73, 148, 206, 0.2);
+      }
+
+      .submit-btn {
+        display: block;
+        width: 100%;
+        margin-top: 1.5em;
+        padding: 0.65em 1em;
+        background: rgb(73, 148, 206);
+        color: white;
+        border: none;
+        border-radius: 3px;
+        font-size: 14px;
+        font-family: inherit;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background 150ms;
+      }
+
+      .submit-btn:hover {
+        background: rgb(58, 128, 182);
+      }
+
+      .submit-btn:active {
+        background: rgb(48, 112, 162);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="login-card">
+      <div class="login-header">
+        <span class="envelope">&#9993;</span>
+        <h1>MailDev</h1>
+      </div>
+      <div class="login-body">
+        <div id="error-message" class="error-message">
+          Invalid username or password.
+        </div>
+        <form method="POST">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" autocomplete="username" required autofocus>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" autocomplete="current-password" required>
+          </div>
+          <button type="submit" class="submit-btn">Sign In</button>
+        </form>
+      </div>
+    </div>
+    <script>
+      if (new URLSearchParams(window.location.search).get('error')) {
+        document.getElementById('error-message').style.display = 'block'
+      }
+    </script>
+  </body>
+</html>

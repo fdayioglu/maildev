@@ -59,6 +59,11 @@
                                     <i ng-if="!settings.darkThemeEnabled" class="fas fa-moon"></i>
                                 </a>
                             </li>
+                            <li class="header-nav-item" ng-if="authEnabled">
+                                <a href="logout" class="header-nav-item-link" title="Sign out">
+                                    <i class="fas fa-sign-out-alt"></i>
+                                </a>
+                            </li>
                             <li class="header-nav-item">
                                 <a ng-click="toggleNavMore($event)" href="" class="header-nav-item-link" title="Additional configuration">
                                     <i class="fas fa-cog"></i>
